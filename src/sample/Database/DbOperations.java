@@ -13,7 +13,7 @@ public class DbOperations {
 
     private Logger lgr = Logger.getLogger(DbOperations.class.getName());
 
-    public  void saveToDatabase(boolean successDay, double dayRating) {
+    public void saveToDatabase(boolean successDay, double dayRating) {
         Date todayDate = today();
 
         if(!statsAlreadyEntered(todayDate)) {
