@@ -8,4 +8,4 @@ This project was largely inspired by Steve Job's quote
 To teach the following technologies: Java, JavaFX, Postgres JDBC, Singleton real world application
 
 <h3>Project Description</h3>
-A local analytics tracking application that asks two simple questions and stores the query to the database for later analysis. Future hopes for the program are to implement analytics and better user feedback.
+A local analytics tracking application that asks two simple questions and stores the query to the database for later analysis. Future hopes for the program are to implement visual analytics and better user feedback.
