@@ -13,7 +13,7 @@ public class DbConnector {
     private static String user = "test";
 
     //TODO - look into proper storage of database passwords with client side applications
-    private static String password = "<enter password>";
+    private static String password = "ykyusdeu";
 
     private static Logger lgr = Logger.getLogger(DbConnector.class.getName());
 
