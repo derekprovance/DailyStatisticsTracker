@@ -13,8 +13,9 @@ public class DbOperations {
 
     private Logger lgr = Logger.getLogger(DbOperations.class.getName());
 
-    public void saveToDatabase(boolean successDay, double dayRating) {
+    public boolean saveToDatabase(boolean successDay, double dayRating) {
         Date todayDate = today();
+        boolean wasSuccess = true;
 
         if(!statsAlreadyEntered(todayDate)) {
 
@@ -30,13 +31,16 @@ public class DbOperations {
 
             } catch (SQLException ex) {
                 lgr.log(Level.SEVERE, ex.getMessage(), ex);
-
+                wasSuccess = false;
             } finally {
                 closePreparedStatement(pst);
             }
         } else {
             lgr.log(Level.SEVERE, "Failure to save! Previous Entry Found.");
+            wasSuccess = false;
         }
+
+        return wasSuccess;
     }
 
     private boolean statsAlreadyEntered(Date date) {
