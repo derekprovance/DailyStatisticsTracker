@@ -1,13 +1,12 @@
-package sample;
+package alanprovance;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import sample.Database.DbConnector;
-import sample.Database.DbOperations;
+import alanprovance.Database.DbConnector;
+import alanprovance.Database.DbOperations;
 
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -16,8 +15,8 @@ public class Controller {
     @FXML private javafx.scene.control.Button submitButton;
     @FXML private javafx.scene.control.ToggleButton successDay;
     @FXML private javafx.scene.control.Slider dayRating;
-    @FXML private javafx.scene.control.Label mainText;
     @FXML private javafx.scene.control.Label errorMessage;
+    @FXML private TextArea note;
 
     private Parent root;
 
@@ -25,7 +24,7 @@ public class Controller {
 
     public Controller() throws IOException {
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("sample.fxml")
+                getClass().getResource("main.fxml")
         );
         loader.setController(this);
 
@@ -39,10 +38,10 @@ public class Controller {
     @FXML
     public void submitForm() {
         DbOperations dbOps = new DbOperations();
-        if(dbOps.saveToDatabase(successDay.isSelected(), dayRating.getValue())) {
+        if(dbOps.saveToDatabase(successDay.isSelected(), dayRating.getValue(), note.getText())) {
             closeWindow();
         } else {
-            displayError();
+            displayError("Save Error!");
             disableForm();
         }
     }
@@ -59,6 +58,11 @@ public class Controller {
     }
 
     public void displayError() {
+        errorMessage.setVisible(true);
+    }
+
+    public void displayError(String error) {
+        errorMessage.setText(error);
         errorMessage.setVisible(true);
     }
 

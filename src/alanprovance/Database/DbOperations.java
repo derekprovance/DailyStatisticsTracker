@@ -1,4 +1,4 @@
-package sample.Database;
+package alanprovance.Database;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -13,7 +13,7 @@ public class DbOperations {
 
     private Logger lgr = Logger.getLogger(DbOperations.class.getName());
 
-    public boolean saveToDatabase(boolean successDay, double dayRating) {
+    public boolean saveToDatabase(boolean successDay, double dayRating, String note) {
         Date todayDate = today();
         boolean wasSuccess = true;
 
@@ -22,10 +22,11 @@ public class DbOperations {
             PreparedStatement pst = null;
 
             try {
-                pst = DbConnector.getDbConnection().prepareStatement("INSERT INTO daily_statistics(jobs_rating, daily_rating, date_added) VALUES(?, ?, ?)");
+                pst = DbConnector.getDbConnection().prepareStatement("INSERT INTO daily_statistics(jobs_rating, daily_rating, date_added, notes) VALUES(?, ?, ?, ?)");
                 pst.setBoolean(1, successDay);
                 pst.setInt(2, (int) Math.round(dayRating));
                 pst.setDate(3, todayDate);
+                pst.setString(4, note);
 
                 pst.executeUpdate();
 

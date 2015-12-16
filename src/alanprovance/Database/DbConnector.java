@@ -1,4 +1,4 @@
-package sample.Database;
+package alanprovance.Database;
 
 import java.sql.*;
 import java.util.logging.Level;

@@ -1,11 +1,8 @@
-package sample;
+package alanprovance;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -18,10 +15,10 @@ public class Main extends Application {
 
         primaryStage.setTitle("Daily Progress Tracker");
         primaryStage.setScene(new Scene(controller.getRoot(), 500, 200));
-        primaryStage.setMaxHeight(210);
-        primaryStage.setMaxWidth(500);
-        primaryStage.setMinHeight(210);
-        primaryStage.setMinWidth(500);
+        primaryStage.setMaxHeight(151);
+        primaryStage.setMaxWidth(476);
+        primaryStage.setMinHeight(151);
+        primaryStage.setMinWidth(476);
 
         primaryStage.show();
     }
